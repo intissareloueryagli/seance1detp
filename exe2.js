@@ -25,6 +25,13 @@ document.getElementById('form-question').addEventListener('submit',
     const correcte = div.querySelector('input[type="checkbox"]').checked;
     propositions.push({ texte, correcte });
     });
+     
+    const propositionCorrecte = propositions.some(p => p.correcte);
+
+    if (!propositionCorrecte) {
+        alert('il doit y avoir au moins une proposition correcte ');
+        return;
+    }
     // TODO : Trouver l'examen existant à partir du localStorage
     const examsKey = 'examens_' + proprietaire;
     const exams = JSON.parse(localStorage.getItem(examsKey)) || [];
